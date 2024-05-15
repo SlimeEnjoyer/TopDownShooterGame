@@ -10,10 +10,18 @@ public class CameraMove : MonoBehaviour
 	public GameObject mainMenu;
 	public GameObject settings;
 
-	void Update ()
+	public MainMenu mainMenuScript;
+	void Update()
 	{
-		transform.position = Vector3.Lerp(transform.position, playPosition.position, Time.deltaTime);
-		float rotateX = 90;
-		transform.eulerAngles = new Vector3(rotateX, 0, 0);
+		mainMenuScript = GameObject.Find("Main_Menu").GetComponent<MainMenu>();
+		float camPos = mainMenuScript.camPos;
+
+		if (camPos == 1)
+        {
+			transform.position = Vector3.Lerp(transform.position, playPosition.position, Time.deltaTime);
+			float rotateX = 90;
+			transform.eulerAngles = new Vector3(rotateX, 0, 0);
+        }
+		
 	}
 }
