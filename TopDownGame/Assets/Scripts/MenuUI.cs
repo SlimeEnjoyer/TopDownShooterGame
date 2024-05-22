@@ -6,6 +6,7 @@ using UnityEngine.UI;
 public class MenuUI : MonoBehaviour
 {
     public float camPos = 1; //3 = main menu position, 1 = play position, 2= setting position
+    public float levelNumber = 0; //0 = none
     
     public void ClickButton(int buttonClicked)
     {
@@ -13,6 +14,7 @@ public class MenuUI : MonoBehaviour
         if (buttonClicked == 1)
         {
             camPos = 1;
+            levelNumber = 1;
         }
         else if (buttonClicked == 2)
         {
@@ -21,6 +23,7 @@ public class MenuUI : MonoBehaviour
         else if (buttonClicked == 3)
         {
             camPos = 3;
+            levelNumber = 0;
         }
     }
 }
