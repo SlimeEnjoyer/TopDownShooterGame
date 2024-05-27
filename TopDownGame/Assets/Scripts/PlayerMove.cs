@@ -1,16 +1,30 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEditor;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using static UnityEditor.FilePathAttribute;
 
-public class PlayerController : MonoBehaviour
+public class PlayerMove : MonoBehaviour
 {
     public float speed;
     private Vector2 move, mouseLook, joystickLook;
     private Vector3 rotationTarget;
     public bool isPC;
+    private CharacterController controller;
+
+    [SerializeField]
+    private int playerIndex = 0;
+
+    private void Awake()
+    {
+        controller = GetComponent<CharacterController>();
+    }
+    public int GetPlayerIndex()
+    {
+        return playerIndex;
+    }
 
     public void OnMove(InputAction.CallbackContext context)
     {
