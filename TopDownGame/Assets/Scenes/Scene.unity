@@ -2755,6 +2755,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: pf_Menu_Space
       objectReference: {fileID: 0}
+    - target: {fileID: 8387309071983663491, guid: e1bbeee66400a764d85093a0d3350ca8, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e1bbeee66400a764d85093a0d3350ca8, type: 3}
 --- !u!4 &1306491172 stripped
