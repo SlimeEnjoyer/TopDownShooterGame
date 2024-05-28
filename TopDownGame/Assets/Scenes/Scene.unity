@@ -2410,7 +2410,7 @@ MonoBehaviour:
   m_JoinAction:
     m_UseReference: 0
     m_Action:
-      m_Name: 
+      m_Name: Join
       m_Type: 0
       m_ExpectedControlType: 
       m_Id: ef2d10ba-a8c2-45d0-8e67-052e4b553a37
