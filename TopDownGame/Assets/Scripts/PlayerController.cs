@@ -8,10 +8,18 @@ public class PlayerController : MonoBehaviour
     private float playerSpeed = 2.0f;
     private CharacterController controller;
     private Vector2 movementInput = Vector2.zero, lookInput;
+    private int playerNumber = 0;
 
     private void Start()
     {
         controller = gameObject.GetComponent<CharacterController>();
+        var objects = GameObject.FindGameObjectsWithTag("Player");
+        Debug.Log("there are " + objects);
+        //if(objects == 1)
+        //{
+
+        //}
+
     }
 
     public void OnMove(InputAction.CallbackContext context)
