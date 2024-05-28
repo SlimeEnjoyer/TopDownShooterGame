@@ -8,18 +8,25 @@ public class PlayerController : MonoBehaviour
     private float playerSpeed = 2.0f;
     private CharacterController controller;
     private Vector2 movementInput = Vector2.zero, lookInput;
-    private int playerNumber = 0;
+
+    [Tooltip("Don't assign values in inspector.  This is done in code!")]
+    public int playerNumber = 0;
+
 
     private void Start()
     {
         controller = gameObject.GetComponent<CharacterController>();
-        var objects = GameObject.FindGameObjectsWithTag("Player");
-        Debug.Log("there are " + objects);
-        //if(objects == 1)
-        //{
 
-        //}
+        //when player spawns in, find Game MAnager, and tell it to "Add Player To Game" (sets up playerNumber and spawn point position, etc)
+        GameObject.Find("Camera").GetComponent<GameManager>().AddPlayerToGame(this);
 
+        Invoke("MoveToSpawnPosition", 0.1f);
+    }
+
+
+    public void MoveToSpawnPosition()
+    {
+        GameObject.Find("Camera").GetComponent<GameManager>().PlacePlayerAtSpawnPoint(this);
     }
 
     public void OnMove(InputAction.CallbackContext context)
@@ -36,9 +43,9 @@ public class PlayerController : MonoBehaviour
     void Update()
     {
 
-            movePlayer();
- 
-            moveWithAim();
+        movePlayer();
+
+        moveWithAim();
     }
 
     public void movePlayer()
