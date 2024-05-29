@@ -11,6 +11,13 @@ public class CameraMove : MonoBehaviour
     public GameObject playMenu;
     public GameObject settings;
 
+    public GameObject P1Health;
+    public GameObject P2Health;
+    public GameObject P3Health;
+    public GameObject P4Health;
+
+    public int numberOfPlayers;
+
 	public MenuUI mainMenuScript;
 
     private void Start()
@@ -19,12 +26,37 @@ public class CameraMove : MonoBehaviour
         mainMenu.SetActive(true);
         playMenu.SetActive(false);
         settings.SetActive(false);
+        P1Health.SetActive(false);
+        P2Health.SetActive(false);
+        P3Health.SetActive(false);
+        P4Health.SetActive(false);
     }
     void Update()
 	{
 		float camPos = mainMenuScript.camPos;
+        int play = mainMenuScript.play;
 
-		
+        if (GameObject.Find("PlayerOne") & GameObject.Find("PlayerTwo") == null & GameObject.Find("PlayerThree") == null & GameObject.Find("PlayerFour") == null)
+        {
+            numberOfPlayers = 1;
+            Debug.Log("there are " + numberOfPlayers + " players");
+        }
+        else if (GameObject.Find("PlayerOne") & GameObject.Find("PlayerTwo") & GameObject.Find("PlayerThree") == null & GameObject.Find("PlayerFour") == null)
+        {
+            numberOfPlayers = 2;
+            Debug.Log("there are " + numberOfPlayers + " players");
+        }
+        else if (GameObject.Find("PlayerOne") & GameObject.Find("PlayerTwo") & GameObject.Find("PlayerThree") & GameObject.Find("PlayerFour") == null)
+        {
+            numberOfPlayers = 3;
+            Debug.Log("there are " + numberOfPlayers + " players");
+        }
+        else if (GameObject.Find("PlayerOne") & GameObject.Find("PlayerTwo") & GameObject.Find("PlayerThree") & GameObject.Find("PlayerFour"))
+        {
+            numberOfPlayers = 4;
+            Debug.Log("there are " + numberOfPlayers + " players");
+        }
+
         if (camPos == 1)
         {
 			transform.position = Vector3.Lerp(transform.position, playPosition.position, Time.deltaTime);
@@ -43,7 +75,7 @@ public class CameraMove : MonoBehaviour
             playMenu.SetActive(false);
             settings.SetActive(true);
         }
-        if (camPos == 3)
+        else if (camPos == 3)
         {
             transform.position = Vector3.Lerp(transform.position, mainMenuPosition.position, Time.deltaTime);
             float rotateY = -20;
@@ -51,6 +83,42 @@ public class CameraMove : MonoBehaviour
             mainMenu.SetActive(true);
             playMenu.SetActive(false);
             settings.SetActive(false);
+        }
+        
+        
+        if (play == 1)
+        {
+            mainMenu.SetActive(false);
+            playMenu.SetActive(false);
+            settings.SetActive(false);
+            if (numberOfPlayers == 1)
+            {
+                P1Health.SetActive(true);
+                P2Health.SetActive(false);
+                P3Health.SetActive(false);
+                P4Health.SetActive(false);
+            }
+            else if (numberOfPlayers == 2)
+            {
+                P1Health.SetActive(true);
+                P2Health.SetActive(true);
+                P3Health.SetActive(false);
+                P4Health.SetActive(false);
+            }
+            else if (numberOfPlayers == 3)
+            {
+                P1Health.SetActive(true);
+                P2Health.SetActive(true);
+                P3Health.SetActive(true);
+                P4Health.SetActive(false);
+            }
+            else if (numberOfPlayers == 4)
+            {
+                P1Health.SetActive(true);
+                P2Health.SetActive(true);
+                P3Health.SetActive(true);
+                P4Health.SetActive(true);
+            }
         }
 
     }

@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 4963065613844540021}
   - component: {fileID: 8438600506499359485}
   - component: {fileID: 3583196964828233127}
+  - component: {fileID: 8691043348377648955}
   m_Layer: 0
   m_Name: PlayerSpawn2
   m_TagString: Untagged
@@ -49,7 +50,7 @@ MeshRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 171550397395988977}
-  m_Enabled: 1
+  m_Enabled: 0
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
@@ -93,10 +94,23 @@ SphereCollider:
   m_GameObject: {fileID: 171550397395988977}
   m_Material: {fileID: 0}
   m_IsTrigger: 0
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 2
   m_Radius: 0.5
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &8691043348377648955
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 171550397395988977}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c8508c5a1f85a4047925928c3c80c95f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  spawnPointID: 2
 --- !u!1 &187522504534976669
 GameObject:
   m_ObjectHideFlags: 0
@@ -109,6 +123,7 @@ GameObject:
   - component: {fileID: 3844961482522721326}
   - component: {fileID: 2612456336168709672}
   - component: {fileID: 1253151257045056099}
+  - component: {fileID: 2706647380202745349}
   m_Layer: 0
   m_Name: PlayerSpawn4
   m_TagString: Untagged
@@ -146,7 +161,7 @@ MeshRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 187522504534976669}
-  m_Enabled: 1
+  m_Enabled: 0
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
@@ -190,10 +205,23 @@ SphereCollider:
   m_GameObject: {fileID: 187522504534976669}
   m_Material: {fileID: 0}
   m_IsTrigger: 0
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 2
   m_Radius: 0.5
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &2706647380202745349
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 187522504534976669}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c8508c5a1f85a4047925928c3c80c95f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  spawnPointID: 4
 --- !u!1 &1366319199412325573
 GameObject:
   m_ObjectHideFlags: 0
@@ -303,6 +331,7 @@ GameObject:
   - component: {fileID: 3070416268828373794}
   - component: {fileID: 861949949741200982}
   - component: {fileID: 5788089667160736937}
+  - component: {fileID: 6437842190964538596}
   m_Layer: 0
   m_Name: PlayerSpawn1
   m_TagString: Untagged
@@ -340,7 +369,7 @@ MeshRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1932932069239451546}
-  m_Enabled: 1
+  m_Enabled: 0
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
@@ -384,10 +413,23 @@ SphereCollider:
   m_GameObject: {fileID: 1932932069239451546}
   m_Material: {fileID: 0}
   m_IsTrigger: 0
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 2
   m_Radius: 0.5
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &6437842190964538596
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1932932069239451546}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c8508c5a1f85a4047925928c3c80c95f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  spawnPointID: 1
 --- !u!1 &2996030733283730121
 GameObject:
   m_ObjectHideFlags: 0
@@ -932,6 +974,7 @@ GameObject:
   - component: {fileID: 5644185395715433369}
   - component: {fileID: 354448903005682048}
   - component: {fileID: 6192612212216807155}
+  - component: {fileID: 8182979394599194884}
   m_Layer: 0
   m_Name: PlayerSpawn3
   m_TagString: Untagged
@@ -969,7 +1012,7 @@ MeshRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6066430990539928111}
-  m_Enabled: 1
+  m_Enabled: 0
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
@@ -1013,10 +1056,23 @@ SphereCollider:
   m_GameObject: {fileID: 6066430990539928111}
   m_Material: {fileID: 0}
   m_IsTrigger: 0
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 2
   m_Radius: 0.5
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &8182979394599194884
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6066430990539928111}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c8508c5a1f85a4047925928c3c80c95f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  spawnPointID: 3
 --- !u!1 &6522611520412304352
 GameObject:
   m_ObjectHideFlags: 0

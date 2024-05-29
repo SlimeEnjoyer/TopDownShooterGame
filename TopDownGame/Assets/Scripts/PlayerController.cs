@@ -42,10 +42,25 @@ public class PlayerController : MonoBehaviour
 
     void Update()
     {
-
         movePlayer();
-
         moveWithAim();
+
+        if(playerNumber == 1)
+        {
+            this.gameObject.name = "PlayerOne";
+        }
+        else if (playerNumber == 2)
+        {
+            this.gameObject.name = "PlayerTwo";
+        }
+        else if (playerNumber == 3)
+        {
+            this.gameObject.name = "PlayerThree";
+        }
+        else if (playerNumber == 4)
+        {
+            this.gameObject.name = "PlayerFour";
+        }
     }
 
     public void movePlayer()
