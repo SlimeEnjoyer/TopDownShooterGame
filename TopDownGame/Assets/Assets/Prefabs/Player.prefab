@@ -115,6 +115,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerSpeed: 8
+  Player1: {fileID: 2100000, guid: 59df5de1958d07d4f8ba37bf3819bd3f, type: 2}
+  Player2: {fileID: 2100000, guid: 6000b7a83ee95f741b67c0e0133eea94, type: 2}
+  Player3: {fileID: 2100000, guid: 88477287de2243a4b84f72f603125132, type: 2}
+  Player4: {fileID: 2100000, guid: 7a5820094f83547408cea10c479a5fe5, type: 2}
   playerNumber: 0
 --- !u!143 &5317454818840533704
 CharacterController:

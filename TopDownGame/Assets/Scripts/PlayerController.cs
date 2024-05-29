@@ -8,6 +8,10 @@ public class PlayerController : MonoBehaviour
     private float playerSpeed = 2.0f;
     private CharacterController controller;
     private Vector2 movementInput = Vector2.zero, lookInput;
+    public Material Player1;
+    public Material Player2;
+    public Material Player3;
+    public Material Player4;
 
     [Tooltip("Don't assign values in inspector.  This is done in code!")]
     public int playerNumber = 0;
@@ -48,18 +52,22 @@ public class PlayerController : MonoBehaviour
         if(playerNumber == 1)
         {
             this.gameObject.name = "PlayerOne";
+            this.GetComponent<Renderer>().material = Player1;
         }
         else if (playerNumber == 2)
         {
             this.gameObject.name = "PlayerTwo";
+            this.GetComponent<Renderer>().material = Player2;
         }
         else if (playerNumber == 3)
         {
             this.gameObject.name = "PlayerThree";
+            this.GetComponent<Renderer>().material = Player3;
         }
         else if (playerNumber == 4)
         {
             this.gameObject.name = "PlayerFour";
+            this.GetComponent<Renderer>().material = Player4;
         }
     }
 
