@@ -1467,6 +1467,7 @@ MonoBehaviour:
   P2Health: {fileID: 505442663}
   P3Health: {fileID: 762721967}
   P4Health: {fileID: 850130695}
+  PlayerManager: {fileID: 1101303006}
   numberOfPlayers: 0
   mainMenuScript: {fileID: 1768975999}
 --- !u!81 &575802073

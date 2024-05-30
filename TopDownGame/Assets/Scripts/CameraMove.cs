@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class CameraMove : MonoBehaviour
 {
@@ -16,13 +17,16 @@ public class CameraMove : MonoBehaviour
     public GameObject P3Health;
     public GameObject P4Health;
 
+
     public int numberOfPlayers;
 
 	public MenuUI mainMenuScript;
+    public PlayerInputManager playerInputManager;
 
     private void Start()
     {
         mainMenuScript = GameObject.Find("Main_Menu").GetComponent<MenuUI>();
+        playerInputManager = GameObject.Find("PlayerManager").GetComponent<PlayerInputManager>();
         mainMenu.SetActive(true);
         playMenu.SetActive(false);
         settings.SetActive(false);
@@ -30,6 +34,7 @@ public class CameraMove : MonoBehaviour
         P2Health.SetActive(false);
         P3Health.SetActive(false);
         P4Health.SetActive(false);
+        playerInputManager.DisableJoining();
     }
     void Update()
 	{
@@ -85,9 +90,13 @@ public class CameraMove : MonoBehaviour
             settings.SetActive(false);
         }
         
-        
-        if (play == 1)
+        if (play == 0)
         {
+            playerInputManager.DisableJoining();
+        }
+        else if (play == 1)
+        {
+            playerInputManager.EnableJoining();
             mainMenu.SetActive(false);
             playMenu.SetActive(false);
             settings.SetActive(false);
