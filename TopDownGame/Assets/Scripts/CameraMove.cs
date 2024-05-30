@@ -44,22 +44,18 @@ public class CameraMove : MonoBehaviour
         if (GameObject.Find("PlayerOne") & GameObject.Find("PlayerTwo") == null & GameObject.Find("PlayerThree") == null & GameObject.Find("PlayerFour") == null)
         {
             numberOfPlayers = 1;
-            Debug.Log("there are " + numberOfPlayers + " players");
         }
         else if (GameObject.Find("PlayerOne") & GameObject.Find("PlayerTwo") & GameObject.Find("PlayerThree") == null & GameObject.Find("PlayerFour") == null)
         {
             numberOfPlayers = 2;
-            Debug.Log("there are " + numberOfPlayers + " players");
         }
         else if (GameObject.Find("PlayerOne") & GameObject.Find("PlayerTwo") & GameObject.Find("PlayerThree") & GameObject.Find("PlayerFour") == null)
         {
             numberOfPlayers = 3;
-            Debug.Log("there are " + numberOfPlayers + " players");
         }
         else if (GameObject.Find("PlayerOne") & GameObject.Find("PlayerTwo") & GameObject.Find("PlayerThree") & GameObject.Find("PlayerFour"))
         {
             numberOfPlayers = 4;
-            Debug.Log("there are " + numberOfPlayers + " players");
         }
 
         if (camPos == 1)

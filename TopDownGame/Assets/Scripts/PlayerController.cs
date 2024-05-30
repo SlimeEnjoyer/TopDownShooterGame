@@ -1,5 +1,7 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.UI;
+using TMPro;
 
 [RequireComponent(typeof(CharacterController))]
 public class PlayerController : MonoBehaviour
@@ -8,10 +10,15 @@ public class PlayerController : MonoBehaviour
     private float playerSpeed = 2.0f;
     private CharacterController controller;
     private Vector2 movementInput = Vector2.zero, lookInput;
+
     public Material Player1;
     public Material Player2;
     public Material Player3;
     public Material Player4;
+
+    public float playerHealth = 100f;
+
+    private TextMeshProUGUI textmeshproComponent;
 
     [Tooltip("Don't assign values in inspector.  This is done in code!")]
     public int playerNumber = 0;
@@ -44,10 +51,76 @@ public class PlayerController : MonoBehaviour
         //Debug.Log("lookInput = " + lookInput);
     }
 
+    public void Health()
+    {
+        if (playerNumber == 1)
+        {
+
+            GameObject textObject = GameObject.Find("P1Health");
+
+            if (textObject != null)
+            {
+                textmeshproComponent = textObject.GetComponent<TextMeshProUGUI>();
+
+                if (textmeshproComponent != null)
+                {
+                    textmeshproComponent.text = "P1: " + playerHealth;
+                }
+            }
+        }
+        if (playerNumber == 2)
+        {
+
+            GameObject textObject = GameObject.Find("P2Health");
+
+            if (textObject != null)
+            {
+                textmeshproComponent = textObject.GetComponent<TextMeshProUGUI>();
+
+                if (textmeshproComponent != null)
+                {
+                    textmeshproComponent.text = "P2: " + playerHealth;
+                }
+            }
+        }
+        if (playerNumber == 3)
+        {
+
+            GameObject textObject = GameObject.Find("P3Health");
+
+            if (textObject != null)
+            {
+                textmeshproComponent = textObject.GetComponent<TextMeshProUGUI>();
+
+                if (textmeshproComponent != null)
+                {
+                    textmeshproComponent.text = "P3: " + playerHealth;
+                }
+            }
+        }
+        if (playerNumber == 4)
+        {
+
+            GameObject textObject = GameObject.Find("P4Health");
+
+            if (textObject != null)
+            {
+                textmeshproComponent = textObject.GetComponent<TextMeshProUGUI>();
+
+                if (textmeshproComponent != null)
+                {
+                    textmeshproComponent.text = "P4: " + playerHealth;
+                }
+            }
+        }
+    }
+
     void Update()
     {
         movePlayer();
         moveWithAim();
+        Health();
+
 
         if(playerNumber == 1)
         {

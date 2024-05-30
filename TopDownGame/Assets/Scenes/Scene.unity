@@ -642,7 +642,7 @@ GameObject:
   - component: {fileID: 344726684}
   - component: {fileID: 344726683}
   m_Layer: 5
-  m_Name: Health
+  m_Name: P3Health
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -688,7 +688,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'P3: 100'
+  m_text: 
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -1467,9 +1467,9 @@ MonoBehaviour:
   P2Health: {fileID: 505442663}
   P3Health: {fileID: 762721967}
   P4Health: {fileID: 850130695}
-  PlayerManager: {fileID: 1101303006}
   numberOfPlayers: 0
   mainMenuScript: {fileID: 1768975999}
+  playerInputManager: {fileID: 0}
 --- !u!81 &575802073
 AudioListener:
   m_ObjectHideFlags: 0
@@ -3641,7 +3641,7 @@ GameObject:
   - component: {fileID: 1627909670}
   - component: {fileID: 1627909669}
   m_Layer: 5
-  m_Name: Health
+  m_Name: P4Health
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3687,7 +3687,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'P4: 100'
+  m_text: 
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -4602,7 +4602,7 @@ GameObject:
   - component: {fileID: 1790762737}
   - component: {fileID: 1790762736}
   m_Layer: 5
-  m_Name: Health
+  m_Name: P1Health
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4648,7 +4648,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'P1: 100'
+  m_text: 
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -5232,7 +5232,7 @@ GameObject:
   - component: {fileID: 1943970775}
   - component: {fileID: 1943970774}
   m_Layer: 5
-  m_Name: Health
+  m_Name: P2Health
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -5278,7 +5278,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'P2: 100'
+  m_text: 
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
