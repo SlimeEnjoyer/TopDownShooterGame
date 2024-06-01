@@ -1469,7 +1469,6 @@ MonoBehaviour:
   P4Health: {fileID: 850130695}
   numberOfPlayers: 0
   mainMenuScript: {fileID: 1768975999}
-  playerInputManager: {fileID: 0}
 --- !u!81 &575802073
 AudioListener:
   m_ObjectHideFlags: 0

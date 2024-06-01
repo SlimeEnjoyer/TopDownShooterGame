@@ -17,11 +17,10 @@ public class CameraMove : MonoBehaviour
     public GameObject P3Health;
     public GameObject P4Health;
 
-
     public int numberOfPlayers;
 
 	public MenuUI mainMenuScript;
-    public PlayerInputManager playerInputManager;
+    private PlayerInputManager playerInputManager;
 
     private void Start()
     {

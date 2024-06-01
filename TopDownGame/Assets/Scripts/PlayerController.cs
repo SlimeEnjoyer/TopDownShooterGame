@@ -16,6 +16,11 @@ public class PlayerController : MonoBehaviour
     public Material Player3;
     public Material Player4;
 
+    public GameObject shotGun;
+    public float bulletSpeed = 20;
+    public GameObject bulletPrefab;
+    public Transform bulletSpawn;
+
     public float playerHealth = 100f;
 
     private TextMeshProUGUI textmeshproComponent;
@@ -34,6 +39,11 @@ public class PlayerController : MonoBehaviour
         Invoke("MoveToSpawnPosition", 0.1f);
     }
 
+    public void OnShoot(InputAction.CallbackContext context)
+    {
+        GameObject GO = Instantiate(bulletPrefab, bulletSpawn.position, Quaternion.identity) as GameObject;
+        GO.GetComponent<Rigidbody>().AddForce(shotGun.transform.forward * bulletSpeed, ForceMode.Impulse);
+    }
 
     public void MoveToSpawnPosition()
     {
