@@ -30,10 +30,12 @@ public class PlayerController : MonoBehaviour
     [Tooltip("Don't assign values in inspector.  This is done in code!")]
     public int playerNumber = 0;
 
+    public MenuUI mainMenuScript;
 
     private void Start()
     {
         controller = gameObject.GetComponent<CharacterController>();
+        mainMenuScript = GameObject.Find("Camera").GetComponent<MenuUI>();
 
         //when player spawns in, find Game MAnager, and tell it to "Add Player To Game" (sets up playerNumber and spawn point position, etc)
         GameObject.Find("Camera").GetComponent<GameManager>().AddPlayerToGame(this);
@@ -59,14 +61,18 @@ public class PlayerController : MonoBehaviour
 
     private IEnumerator ShootWithDelay()
     {
-        isShotCoolDown = true;
+        bool play = mainMenuScript.play;
+        if (play == true)
+        {
+            isShotCoolDown = true;
 
-        GameObject GO = Instantiate(bulletPrefab, bulletSpawn.position, Quaternion.identity) as GameObject;
-        GO.GetComponent<Rigidbody>().AddForce(shotGun.transform.forward * bulletSpeed, ForceMode.Impulse);
+            GameObject GO = Instantiate(bulletPrefab, bulletSpawn.position, Quaternion.identity) as GameObject;
+            GO.GetComponent<Rigidbody>().AddForce(shotGun.transform.forward * bulletSpeed, ForceMode.Impulse);
 
-        yield return new WaitForSeconds(shotCoolDown);
+            yield return new WaitForSeconds(shotCoolDown);
 
-        isShotCoolDown = false;
+            isShotCoolDown = false;
+        }
     }
 
     public void MoveToSpawnPosition()
@@ -157,12 +163,16 @@ public class PlayerController : MonoBehaviour
 
     void Update()
     {
-        movePlayer();
-        moveWithAim();
+        bool play = mainMenuScript.play;
+
+        if (play == true)
+        {
+            movePlayer();
+            moveWithAim();
+        }
         Health();
 
-
-        if(playerNumber == 1)
+        if (playerNumber == 1)
         {
             this.gameObject.name = "PlayerOne";
             this.GetComponent<Renderer>().material = Player1;

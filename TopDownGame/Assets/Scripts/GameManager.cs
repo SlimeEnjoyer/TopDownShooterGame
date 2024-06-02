@@ -31,7 +31,7 @@ public class GameManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        mainMenuScript = GameObject.Find("Main_Menu").GetComponent<MenuUI>();
+        mainMenuScript = GameObject.Find("Camera").GetComponent<MenuUI>();
     }
 
 
@@ -40,8 +40,6 @@ public class GameManager : MonoBehaviour
     void Update()
     {
         float levelNumber = mainMenuScript.levelNumber;
-
-        
 
         if (levelNumber == 0)
         {
@@ -105,16 +103,20 @@ public class GameManager : MonoBehaviour
 
     public void ScoreUpdate()
     {
-        if (player1 != null && player2 != null)
+        if (GameObject.Find("PlayerOne") != null && GameObject.Find("PlayerTwo") != null)
         {
-            if (player1.activeSelf && !player2.activeSelf)
+            if (GameObject.Find("PlayerOne").activeSelf && !GameObject.Find("PlayerTwo").activeSelf)
             {
                 Debug.Log("player1 is active and player 2 is not");
             }
             else
             {
-                Debug.Log("something aint working");
+                
             }
+        }
+        else
+        {
+            
         }
     }
     public void AddPlayerToGame(PlayerController player)
