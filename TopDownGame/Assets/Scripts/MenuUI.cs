@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 
 public class MenuUI : MonoBehaviour
 {
@@ -8,7 +9,11 @@ public class MenuUI : MonoBehaviour
     public float levelNumber = 0; //0 = none
     public bool playerJumpIn = false; //before game starts
     public bool play = false; //if game is playing
-    
+
+    private TextMeshProUGUI textmeshproComponent;
+
+    private int countDown;
+
     public void ClickButton(int buttonClicked)
     {
        
@@ -32,7 +37,34 @@ public class MenuUI : MonoBehaviour
         }
         else if (buttonClicked == 5)
         {
-            play = true;
+            StartCoroutine(CountDownThenStart());
+        }
+    }
+
+    public IEnumerator CountDownThenStart()
+    {
+        GameObject textObject = GameObject.Find("Countdown");
+
+        if (textObject != null)
+        {
+            textmeshproComponent = textObject.GetComponent<TextMeshProUGUI>();
+
+            if (textmeshproComponent != null)
+            {
+                countDown = 3;
+                textmeshproComponent.fontSize = 109.61f;
+                textmeshproComponent.text = "" + countDown;
+                yield return new WaitForSeconds(1);
+                countDown = 2;
+                textmeshproComponent.text = "" + countDown;
+                yield return new WaitForSeconds(1);
+                countDown = 1;
+                textmeshproComponent.text = "" + countDown;
+                yield return new WaitForSeconds(1);
+                countDown = 0;
+                textmeshproComponent.text = "" + countDown;
+                play = true;
+            }
         }
     }
 }

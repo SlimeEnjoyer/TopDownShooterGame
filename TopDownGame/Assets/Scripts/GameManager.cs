@@ -6,13 +6,9 @@ using TMPro;
 public class GameManager : MonoBehaviour
 {
     public MenuUI mainMenuScript;
+    public bool play;
     public GameObject MenuArea;
     public GameObject Arena01;
-
-    private GameObject player1;
-    private GameObject player2;
-    private GameObject player3;
-    private GameObject player4;
 
     public int player1Score;
     public int player2Score;
@@ -31,7 +27,8 @@ public class GameManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        mainMenuScript = GameObject.Find("Camera").GetComponent<MenuUI>();
+        mainMenuScript = this.gameObject.GetComponent<MenuUI>();
+        play = mainMenuScript.play;
     }
 
 
@@ -103,20 +100,24 @@ public class GameManager : MonoBehaviour
 
     public void ScoreUpdate()
     {
-        if (GameObject.Find("PlayerOne") != null && GameObject.Find("PlayerTwo") != null)
+        if (play == true)
         {
-            if (GameObject.Find("PlayerOne").activeSelf && !GameObject.Find("PlayerTwo").activeSelf)
+            if (GameObject.Find("PlayerOne") & GameObject.Find("PlayerTwo") == null & GameObject.Find("PlayerThree") == null & GameObject.Find("PlayerFour") == null)
             {
-                Debug.Log("player1 is active and player 2 is not");
+                player1Score += 1;
             }
-            else
+            else if (GameObject.Find("PlayerOne") == null & GameObject.Find("PlayerTwo") & GameObject.Find("PlayerThree") == null & GameObject.Find("PlayerFour") == null)
             {
-                
+                player2Score += 1;
             }
-        }
-        else
-        {
-            
+            else if (GameObject.Find("PlayerOne") == null & GameObject.Find("PlayerTwo") == null & GameObject.Find("PlayerThree") & GameObject.Find("PlayerFour") == null)
+            {
+                player3Score += 1;
+            }
+            else if (GameObject.Find("PlayerOne") == null & GameObject.Find("PlayerTwo") == null & GameObject.Find("PlayerThree") == null & GameObject.Find("PlayerFour"))
+            {
+                player4Score += 1;
+            }
         }
     }
     public void AddPlayerToGame(PlayerController player)
@@ -128,10 +129,7 @@ public class GameManager : MonoBehaviour
         player.playerNumber = players.Count;
 
         Debug.Log("Added new player to Game Manager and moved to Spawn Point.  PlayerNumber = " + player.playerNumber);
-        player1 = GameObject.Find("PlayerOne");
-        player2 = GameObject.Find("PlayerTwo");
-        player3 = GameObject.Find("PlayerThree");
-        player4 = GameObject.Find("PlayerFour");
+        
     }
 
 
