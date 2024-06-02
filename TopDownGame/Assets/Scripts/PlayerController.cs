@@ -2,6 +2,7 @@ using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.UI;
 using TMPro;
+using System.Collections;
 
 [RequireComponent(typeof(CharacterController))]
 public class PlayerController : MonoBehaviour
@@ -20,6 +21,8 @@ public class PlayerController : MonoBehaviour
     public float bulletSpeed = 20;
     public GameObject bulletPrefab;
     public Transform bulletSpawn;
+    private bool isShotCoolDown = false;
+    public float shotCoolDown = 0.5f;
 
     public float playerHealth = 100f;
 
@@ -39,10 +42,32 @@ public class PlayerController : MonoBehaviour
         Invoke("MoveToSpawnPosition", 0.1f);
     }
 
+    private void OnCollisionEnter(Collision other)
+    {
+        if (other.gameObject.tag == "Bullet")
+        {
+            playerHealth -= 10f;
+        }
+    }
+
     public void OnShoot(InputAction.CallbackContext context)
     {
+        if (!isShotCoolDown)
+        {
+            StartCoroutine(ShootWithDelay());
+        }
+    }
+
+    private IEnumerator ShootWithDelay()
+    {
+        isShotCoolDown = true;
+
         GameObject GO = Instantiate(bulletPrefab, bulletSpawn.position, Quaternion.identity) as GameObject;
         GO.GetComponent<Rigidbody>().AddForce(shotGun.transform.forward * bulletSpeed, ForceMode.Impulse);
+
+        yield return new WaitForSeconds(shotCoolDown);
+
+        isShotCoolDown = false;
     }
 
     public void MoveToSpawnPosition()
@@ -63,6 +88,12 @@ public class PlayerController : MonoBehaviour
 
     public void Health()
     {
+        if (playerHealth <= 0)
+        {
+            playerHealth = 0;
+            Destroy(this.gameObject);
+        }
+
         if (playerNumber == 1)
         {
 
