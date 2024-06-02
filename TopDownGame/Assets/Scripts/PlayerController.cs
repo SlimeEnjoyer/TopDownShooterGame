@@ -1,6 +1,5 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
-using UnityEngine.UI;
 using TMPro;
 using System.Collections;
 
@@ -91,7 +90,7 @@ public class PlayerController : MonoBehaviour
         if (playerHealth <= 0)
         {
             playerHealth = 0;
-            Destroy(this.gameObject);
+            this.gameObject.SetActive(false);
         }
 
         if (playerNumber == 1)
