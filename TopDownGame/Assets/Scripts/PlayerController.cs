@@ -2,6 +2,7 @@ using UnityEngine;
 using UnityEngine.InputSystem;
 using TMPro;
 using System.Collections;
+using Unity.VisualScripting;
 
 [RequireComponent(typeof(CharacterController))]
 public class PlayerController : MonoBehaviour
@@ -23,6 +24,8 @@ public class PlayerController : MonoBehaviour
     private bool isShotCoolDown = false;
     public float shotCoolDown = 0.5f;
 
+    public bool isDead;
+
     public float playerHealth = 100f;
 
     private TextMeshProUGUI textmeshproComponent;
@@ -36,6 +39,8 @@ public class PlayerController : MonoBehaviour
     {
         controller = gameObject.GetComponent<CharacterController>();
         mainMenuScript = GameObject.Find("Camera").GetComponent<MenuUI>();
+
+        
 
         //when player spawns in, find Game MAnager, and tell it to "Add Player To Game" (sets up playerNumber and spawn point position, etc)
         GameObject.Find("Camera").GetComponent<GameManager>().AddPlayerToGame(this);
@@ -64,14 +69,17 @@ public class PlayerController : MonoBehaviour
         bool play = mainMenuScript.play;
         if (play == true)
         {
-            isShotCoolDown = true;
+            if (isDead == false)
+            {
+                isShotCoolDown = true;
 
-            GameObject GO = Instantiate(bulletPrefab, bulletSpawn.position, Quaternion.identity) as GameObject;
-            GO.GetComponent<Rigidbody>().AddForce(shotGun.transform.forward * bulletSpeed, ForceMode.Impulse);
+                GameObject GO = Instantiate(bulletPrefab, bulletSpawn.position, Quaternion.identity) as GameObject;
+                GO.GetComponent<Rigidbody>().AddForce(shotGun.transform.forward * bulletSpeed, ForceMode.Impulse);
 
-            yield return new WaitForSeconds(shotCoolDown);
+                yield return new WaitForSeconds(shotCoolDown);
 
-            isShotCoolDown = false;
+                isShotCoolDown = false;
+            }
         }
     }
 
@@ -96,7 +104,7 @@ public class PlayerController : MonoBehaviour
         if (playerHealth <= 0)
         {
             playerHealth = 0;
-            this.gameObject.SetActive(false);
+            isDead = true;
         }
 
         if (playerNumber == 1)
@@ -163,12 +171,20 @@ public class PlayerController : MonoBehaviour
 
     void Update()
     {
+
+        // add a script during the countdown that makes this script make isDead = true
         bool play = mainMenuScript.play;
+
+        Death();
 
         if (play == true)
         {
-            movePlayer();
-            moveWithAim();
+            if (isDead == false)
+            {
+                movePlayer();
+                moveWithAim();
+            }
+            
         }
         Health();
 
@@ -194,6 +210,25 @@ public class PlayerController : MonoBehaviour
         }
     }
 
+    public void Death()
+    {
+        //disable every component on the character.
+        if (isDead == true)
+        {
+            this.GetComponent<CharacterController>().enabled = false;
+            this.GetComponent<CapsuleCollider>().enabled = false;
+            this.GetComponent<BoxCollider>().enabled = false;
+            this.GetComponent<MeshRenderer>().enabled = false;
+            shotGun.GetComponent<MeshRenderer>().enabled = false;
+        }
+        if (isDead == false)
+        {
+            this.GetComponent<CharacterController>().enabled = true;
+            this.GetComponent<CapsuleCollider>().enabled = true;
+            this.GetComponent<BoxCollider>().enabled = true;
+            this.GetComponent<MeshRenderer>().enabled = true;
+        }
+    }
     public void movePlayer()
     {
         Vector3 move = new Vector3(movementInput.x, 0, movementInput.y);

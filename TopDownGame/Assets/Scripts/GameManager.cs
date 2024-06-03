@@ -36,6 +36,8 @@ public class GameManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        play = mainMenuScript.play;
+
         float levelNumber = mainMenuScript.levelNumber;
 
         if (levelNumber == 0)
@@ -52,6 +54,8 @@ public class GameManager : MonoBehaviour
         ScoreBoard();
         ScoreUpdate();
     }
+
+    
 
     public void ScoreBoard()
     {
@@ -102,24 +106,73 @@ public class GameManager : MonoBehaviour
     {
         if (play == true)
         {
-            if (GameObject.Find("PlayerOne") & GameObject.Find("PlayerTwo") == null & GameObject.Find("PlayerThree") == null & GameObject.Find("PlayerFour") == null)
+            if (GameObject.Find("PlayerOne").GetComponent<CharacterController>().enabled == true & GameObject.Find("PlayerTwo").GetComponent<CharacterController>().enabled == false & GameObject.Find("PlayerThree") == null & GameObject.Find("PlayerFour") == null)
             {
+                //2 players, player 1 win
                 player1Score += 1;
+                MatchOver();
             }
-            else if (GameObject.Find("PlayerOne") == null & GameObject.Find("PlayerTwo") & GameObject.Find("PlayerThree") == null & GameObject.Find("PlayerFour") == null)
+            else if (GameObject.Find("PlayerOne").GetComponent<CharacterController>().enabled == false & GameObject.Find("PlayerTwo").GetComponent<CharacterController>().enabled == true & GameObject.Find("PlayerThree") == null & GameObject.Find("PlayerFour") == null)
             {
+                //2 players, player 2 win
                 player2Score += 1;
+                MatchOver();
             }
-            else if (GameObject.Find("PlayerOne") == null & GameObject.Find("PlayerTwo") == null & GameObject.Find("PlayerThree") & GameObject.Find("PlayerFour") == null)
+            else if (GameObject.Find("PlayerOne").GetComponent<CharacterController>().enabled == true & GameObject.Find("PlayerTwo").GetComponent<CharacterController>().enabled == false & GameObject.Find("PlayerThree").GetComponent<CharacterController>().enabled == false & GameObject.Find("PlayerFour") == null)
             {
+                //3 players, player 1 win
+                player1Score += 1;
+                MatchOver();
+            }
+            else if (GameObject.Find("PlayerOne").GetComponent<CharacterController>().enabled == false & GameObject.Find("PlayerTwo").GetComponent<CharacterController>().enabled == true & GameObject.Find("PlayerThree").GetComponent<CharacterController>().enabled == false & GameObject.Find("PlayerFour") == null)
+            {
+                //3 players, player 2 win
+                player2Score += 1;
+                MatchOver();
+            }
+            else if (GameObject.Find("PlayerOne").GetComponent<CharacterController>().enabled == false & GameObject.Find("PlayerTwo").GetComponent<CharacterController>().enabled == false & GameObject.Find("PlayerThree").GetComponent<CharacterController>().enabled == true & GameObject.Find("PlayerFour") == null)
+            {
+                //3 players, player 3 win
                 player3Score += 1;
+                MatchOver();
             }
-            else if (GameObject.Find("PlayerOne") == null & GameObject.Find("PlayerTwo") == null & GameObject.Find("PlayerThree") == null & GameObject.Find("PlayerFour"))
+            else if (GameObject.Find("PlayerOne").GetComponent<CharacterController>().enabled == true & GameObject.Find("PlayerTwo").GetComponent<CharacterController>().enabled == false & GameObject.Find("PlayerThree").GetComponent<CharacterController>().enabled == false & GameObject.Find("PlayerFour").GetComponent<CharacterController>().enabled == false)
             {
+                //4 players, player 1 win
+                player1Score += 1;
+                MatchOver();
+            }
+            else if (GameObject.Find("PlayerOne").GetComponent<CharacterController>().enabled == false & GameObject.Find("PlayerTwo").GetComponent<CharacterController>().enabled == true & GameObject.Find("PlayerThree").GetComponent<CharacterController>().enabled == false & GameObject.Find("PlayerFour").GetComponent<CharacterController>().enabled == false)
+            {
+                //4 players, player 2 win
+                player2Score += 1;
+                MatchOver();
+            }
+            else if (GameObject.Find("PlayerOne").GetComponent<CharacterController>().enabled == false & GameObject.Find("PlayerTwo").GetComponent<CharacterController>().enabled == false & GameObject.Find("PlayerThree").GetComponent<CharacterController>().enabled == true & GameObject.Find("PlayerFour").GetComponent<CharacterController>().enabled == false)
+            {
+                //4 players, player 3 win
+                player3Score += 1;
+                MatchOver();
+            }
+            else if (GameObject.Find("PlayerOne").GetComponent<CharacterController>().enabled == false & GameObject.Find("PlayerTwo").GetComponent<CharacterController>().enabled == false & GameObject.Find("PlayerThree").GetComponent<CharacterController>().enabled == false & GameObject.Find("PlayerFour").GetComponent<CharacterController>().enabled == true)
+            {
+                //4 players, player 4 win
                 player4Score += 1;
+                MatchOver();
             }
         }
     }
+
+
+    public void MatchOver()
+    {
+        mainMenuScript.play = false;
+        play = false;
+        // go back to Main Menu
+
+    }
+
+
     public void AddPlayerToGame(PlayerController player)
     {
         // add player to players list
