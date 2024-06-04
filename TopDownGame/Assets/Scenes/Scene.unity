@@ -1820,6 +1820,8 @@ MonoBehaviour:
   levelNumber: 0
   playerJumpIn: 0
   play: 0
+  roundStartSetup: 0
+  roundNumber: 1
 --- !u!1 &663138833
 GameObject:
   m_ObjectHideFlags: 0

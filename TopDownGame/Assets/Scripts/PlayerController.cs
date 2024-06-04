@@ -40,8 +40,6 @@ public class PlayerController : MonoBehaviour
         controller = gameObject.GetComponent<CharacterController>();
         mainMenuScript = GameObject.Find("Camera").GetComponent<MenuUI>();
 
-        
-
         //when player spawns in, find Game MAnager, and tell it to "Add Player To Game" (sets up playerNumber and spawn point position, etc)
         GameObject.Find("Camera").GetComponent<GameManager>().AddPlayerToGame(this);
 
@@ -105,6 +103,10 @@ public class PlayerController : MonoBehaviour
         {
             playerHealth = 0;
             isDead = true;
+        }
+         if (playerHealth >= 1)
+        {
+            isDead = false;
         }
 
         if (playerNumber == 1)
@@ -174,6 +176,7 @@ public class PlayerController : MonoBehaviour
 
         // add a script during the countdown that makes this script make isDead = true
         bool play = mainMenuScript.play;
+        bool roundStartSetup = mainMenuScript.roundStartSetup;
 
         Death();
 
@@ -186,7 +189,13 @@ public class PlayerController : MonoBehaviour
             }
             
         }
+
         Health();
+        if (roundStartSetup == true)
+        {
+            playerHealth = 100;
+            Invoke("MoveToSpawnPosition", 0.1f);
+        }
 
         if (playerNumber == 1)
         {
@@ -227,6 +236,7 @@ public class PlayerController : MonoBehaviour
             this.GetComponent<CapsuleCollider>().enabled = true;
             this.GetComponent<BoxCollider>().enabled = true;
             this.GetComponent<MeshRenderer>().enabled = true;
+            shotGun.GetComponent<MeshRenderer>().enabled = true;
         }
     }
     public void movePlayer()

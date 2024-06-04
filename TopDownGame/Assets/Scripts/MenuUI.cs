@@ -2,6 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
+using System.Xml;
+using UnityEngine.UI;
 
 public class MenuUI : MonoBehaviour
 {
@@ -9,14 +11,21 @@ public class MenuUI : MonoBehaviour
     public float levelNumber = 0; //0 = none
     public bool playerJumpIn = false; //before game starts
     public bool play = false; //if game is playing
+    public bool roundStartSetup = false;
+    public int roundNumber = 1;
+    public bool gameFinish = false;
 
     private TextMeshProUGUI textmeshproComponent;
 
     private int countDown;
 
+    void Update()
+    {
+        
+    }
+
     public void ClickButton(int buttonClicked)
     {
-       
         if (buttonClicked == 1)
         {
             camPos = 1;
@@ -33,7 +42,7 @@ public class MenuUI : MonoBehaviour
         }
         else if (buttonClicked == 4)
         {
-            playerJumpIn = true;
+                playerJumpIn = true;
         }
         else if (buttonClicked == 5)
         {
@@ -51,6 +60,8 @@ public class MenuUI : MonoBehaviour
 
             if (textmeshproComponent != null)
             {
+                GameObject.Find("Start").GetComponent<Button>().enabled = false;
+                roundStartSetup = true;
                 countDown = 3;
                 textmeshproComponent.fontSize = 109.61f;
                 textmeshproComponent.text = "" + countDown;
@@ -62,8 +73,12 @@ public class MenuUI : MonoBehaviour
                 textmeshproComponent.text = "" + countDown;
                 yield return new WaitForSeconds(1);
                 countDown = 0;
-                textmeshproComponent.text = "" + countDown;
+                textmeshproComponent.text = "Press start to <br>begin round " + roundNumber;
+                textmeshproComponent.fontSize = 37.39f;
+                roundStartSetup = false;
+                roundNumber += 1;
                 play = true;
+                GameObject.Find("Start").GetComponent<Button>().enabled = true;
             }
         }
     }
