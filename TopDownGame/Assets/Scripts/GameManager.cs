@@ -15,6 +15,8 @@ public class GameManager : MonoBehaviour
     public int player3Score;
     public int player4Score;
 
+    public int winningPlayer = 0; //1= player 1, 2 = player 2, etc..
+
     private TextMeshProUGUI textmeshproComponent1;
     private TextMeshProUGUI textmeshproComponent2;
     private TextMeshProUGUI textmeshproComponent3;
@@ -53,6 +55,7 @@ public class GameManager : MonoBehaviour
 
         ScoreBoard();
         ScoreUpdate();
+        WinnerCheck();
     }
 
     
@@ -183,23 +186,62 @@ public class GameManager : MonoBehaviour
         {
             if (player1Score == 3)
             {
-
+                winningPlayer = 1;
             }
             else if (player2Score == 3)
             {
-
+                winningPlayer = 2;
             }
             else if (player3Score == 3)
             {
-
+                winningPlayer = 3;
             }
             else if (player4Score == 3)
             {
-
+                winningPlayer = 4;
             }
             else if (roundNumber == 6)
             {
-
+                if (player1Score > player2Score)
+                {
+                    if (player1Score > player3Score)
+                    {
+                        if (player1Score > player4Score)
+                        {
+                            winningPlayer = 1;
+                        }
+                    }
+                }
+                else if (player2Score > player1Score)
+                {
+                    if (player2Score > player3Score)
+                    {
+                        if (player2Score > player4Score)
+                        {
+                            winningPlayer = 2;
+                        }
+                    }
+                }
+                else if (player3Score > player1Score)
+                {
+                    if (player3Score > player2Score)
+                    {
+                        if (player3Score > player4Score)
+                        {
+                            winningPlayer = 3;
+                        }
+                    }
+                }
+                else if (player4Score > player1Score)
+                {
+                    if (player4Score > player2Score)
+                    {
+                        if (player4Score > player3Score)
+                        {
+                            winningPlayer = 4;
+                        }
+                    }
+                }
             }
         }
     }

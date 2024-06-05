@@ -165,5 +165,6 @@ public class CameraMove : MonoBehaviour
             }
         }
 
+        //add script here to hide all the other ui stuff and show winning ui
     }
 }
